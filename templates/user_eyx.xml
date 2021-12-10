@@ -1,0 +1,16 @@
+<templateSet group="user_eyx">
+  <template name="posteyx" value="@PostMapping(&quot;$url$&quot;)&#10;@ApiOperation(&quot;$desc$&quot;)&#10;public CommonResult $url$(){&#10;    $END$&#10;    return commonResult();&#10;}" description="" toReformat="false" toShortenFQNames="true">
+    <variable name="url" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="desc" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="geteyx" value="@GetMapping(&quot;$URL$&quot;)&#10;@ApiOperation(value = &quot;$DESC$&quot;)&#10;public CommonResult $URL$() {&#10;    return commonResult();&#10;}" description="" toReformat="false" toShortenFQNames="true">
+    <variable name="URL" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="DESC" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+</templateSet>

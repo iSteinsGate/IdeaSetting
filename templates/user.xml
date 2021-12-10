@@ -1,0 +1,114 @@
+<templateSet group="user">
+  <template name="service" value="@Resource&#10;private $Entity$Dao $DaoVar$;       &#10;public $Entity$BO get(Integer id){&#10;    $Entity$DO entity = $DaoVar$.getByPrimary(id);&#10;    if (entity == null) {&#10;        throw DefineException.exception(&quot;未找到对应id的数据&quot;);&#10;    }&#10;    return BeanCopy.copyProperties(entity ,$Entity$BO.class);&#10;}&#10;@Transactional(rollbackFor = Exception.class)&#10;public void create($Entity$BO bo){&#10;    $Entity$DO entity = BeanCopy.copyProperties(bo, $Entity$DO.class);&#10;    $DaoVar$.insert(entity);&#10;}&#10;@Transactional(rollbackFor = Exception.class)&#10;public void update($Entity$BO bo){&#10;    $Entity$DO entity = BeanCopy.copyProperties(bo, $Entity$DO.class);&#10;    $DaoVar$.updateSelective(entity);&#10;}&#10;@Transactional(rollbackFor = java.lang.Exception.class)&#10;public void remove(Integer id){&#10;    $DaoVar$.deleteByPrimary(id);&#10;}&#10;public List&lt;$Entity$BO&gt; list($Entity$BOQuery boQuery) {&#10;    List&lt;$Entity$DO&gt; list = $DaoVar$.list(BeanCopy.copyProperties(boQuery, $Entity$DOQuery.class));&#10;    return BeanCopy.copyList(list,$Entity$BO.class);&#10;}&#10;/**&#10; * 分页查询&#10; * @param boQuery&#10; * @return&#10; */&#10;public Paging&lt;$Entity$BO&gt; page(String name, Integer pageNo,Integer pageSize) {&#10;    PageInfo&lt;$Entity$DO&gt; objectPageInfo = PageHelper.startPage(pageNo,pageSize)&#10;            .doSelectPageInfo(() -&gt; $DaoVar$.list(name));&#10;    return new Paging&lt;&gt;(objectPageInfo);&#10;}" description="生成crud" toReformat="true" toShortenFQNames="true">
+    <variable name="Entity" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="DaoVar" expression="suggestVariableName()" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="controller" value="@Resource&#10;private $Entity$Service $ServiceVar$;&#10;&#10;@PostMapping(&quot;create&quot;)&#10;@ApiOperation(&quot;创建$info$&quot;)&#10;public R create(@Validated @RequestBody $Entity$Create $EntityVAR$){&#10;    $ServiceVar$.create(BeanCopy.copyProperties($EntityVAR$,$Entity$BO.class));&#10;    return R.success();&#10;}&#10;&#10;@PostMapping(&quot;update&quot;)&#10;@ApiOperation(&quot;修改$info$&quot;)&#10;public R update(@Validated @RequestBody $Entity$Update $EntityVAR$){&#10;    $ServiceVar$.update(BeanCopy.copyProperties($EntityVAR$,$Entity$BO.class));&#10;    return R.success();&#10;}$END$&#10;&#10;@PostMapping(&quot;remove&quot;)&#10;@ApiOperation(&quot;删除$info$&quot;)&#10;public R remove(@RequestBody @Valid IdBean&lt;String&gt; idBean){&#10;    $ServiceVar$.remove(idBean.getId());&#10;    return R.success();&#10;}&#10;&#10;@GetMapping(&quot;page&quot;)&#10;@ApiOperation(&quot;获取$info$分页列表&quot;)&#10;public R&lt;Paging&lt;$Entity$VO&gt;&gt; page(@ModelAttribute @Valid $Entity$VOQuery query){&#10;    Paging&lt;$Entity$BO&gt; boPaging = $ServiceVar$.page(BeanCopy.copyProperties(query,$Entity$BOQuery.class));&#10;    Paging&lt;$Entity$VO&gt; voPaging = BeanCopy.copyPage(boPaging, $Entity$VO.class);&#10;    return R.data(voPaging);&#10;}&#10;" description="生成rest" toReformat="false" toShortenFQNames="true">
+    <variable name="Entity" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="ServiceVar" expression="suggestVariableName()" defaultValue="" alwaysStopAt="false" />
+    <variable name="info" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="EntityVAR" expression="suggestVariableName()" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="dao" value="@Resource&#10;private $Entity$Mapper $MapperVar$;&#10;&#10;public $Entity$ getByPrimary(String id){&#10;    return $MapperVar$.getByPrimary(id);&#10;}&#10;public void insert($Entity$ $EntityVar$){&#10;    $MapperVar$.insert($EntityVar$);&#10;}&#10;public void update($Entity$ $EntityVar$){&#10;    $MapperVar$.update($EntityVar$);&#10;}&#10;public void updateSelective($Entity$ $EntityVar$){&#10;    $MapperVar$.updateSelective($EntityVar$);&#10;}&#10;public void deleteByPrimary(String id){&#10;    $MapperVar$.deleteByPrimary(id);&#10;}&#10;$END$" description="生成dao层模板" toReformat="false" toShortenFQNames="true">
+    <variable name="Entity" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MapperVar" expression="suggestVariableName()" defaultValue="" alwaysStopAt="false" />
+    <variable name="EntityVar" expression="suggestVariableName()" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="var" value="@Resource&#10;private $Object$ $var$;" description="" toReformat="false" toShortenFQNames="true">
+    <variable name="Object" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="var" expression="suggestVariableName()" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="model" value="@RestController&#10;@RequestMapping(&quot;/$modelC$&quot;)&#10;@Api(&quot;$modelE$&quot;)" description="" toReformat="false" toShortenFQNames="true">
+    <variable name="modelC" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="modelE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="selectList" value="&lt;!--*********************************自定义方法*********************************************--&gt;&#10;&lt;operation name=&quot;selectList&quot; multiplicity=&quot;many&quot; remark=&quot;根据条件获取列表数据&quot;&gt;&#10;    SELECT *&#10;    FROM $TABLE$&#10;    &lt;where&gt;&#10;        $END$&#10;    &lt;/where&gt;&#10;&lt;/operation&gt;" description="查询列表信息" toReformat="false" toShortenFQNames="true">
+    <variable name="TABLE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="post" value="@PostMapping(&quot;$url$&quot;)&#10;@ApiOperation(&quot;$desc$&quot;)&#10;public R $url$(){&#10;    $END$&#10;    return R.success();&#10;}" description="生成post方法" toReformat="false" toShortenFQNames="true">
+    <variable name="url" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="desc" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="selectPage" value="public Paging&lt;$T$&gt; page(PageParam pageParam) {&#10;        PageInfo&lt;$T$&gt; objectPageInfo = PageHelper.startPage(pageParam.getPageNo(), pageParam.getPageSize(), pageParam.getOrderBy())&#10;                .doSelectPageInfo(() -&gt; $END$);&#10;        return new Paging&lt;&gt;(objectPageInfo);&#10;}" description="" toReformat="false" toShortenFQNames="true">
+    <variable name="T" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+      <option name="JAVA_EXPRESSION" value="true" />
+    </context>
+  </template>
+  <template name="region" value="@ApiModelProperty(&quot;省&quot;)&#10;private String province;&#10;@ApiModelProperty(&quot;市&quot;)&#10;private String city;&#10;@ApiModelProperty(&quot;区&quot;)&#10;private String district;" description="省市区" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name=".group" value=".collect(Collectors.groupingBy($end$))" description="" toReformat="false" toShortenFQNames="true">
+    <variable name="end" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_CODE" value="true" />
+    </context>
+  </template>
+  <template name="dict" value="@DictConstraint(dictCode = &quot;$code$&quot;,dictName = &quot;&quot;,message = &quot;$name$必须符合字典&quot;)" description="" toReformat="false" toShortenFQNames="true">
+    <variable name="code" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="name" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="nn" value="@NotNull(message = &quot;$pro$不能为空&quot;)" description="" toReformat="false" toShortenFQNames="true">
+    <variable name="pro" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="nb" value="@NotBlank(message = &quot;$pro$不能为空&quot;)" description="" toReformat="false" toShortenFQNames="true">
+    <variable name="pro" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="ofCode" value="private String code;&#10;private String name;&#10;/**&#10; * 根据code获取枚举值&#10; * @param code&#10; * @return&#10; */&#10;public static $ENUM$ ofCode(String code){&#10;        return Arrays.stream($ENUM$.values()).filter(item -&gt; item.getCode().equals(code)).findFirst().orElse(null);&#10;}" description="" toReformat="false" toShortenFQNames="true">
+    <variable name="ENUM" expression="className()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="op" value="Optional.ofNullable($VAR$)&#10;        .ifPresent($END$);" description="" toReformat="false" toShortenFQNames="true">
+    <variable name="VAR" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="bud" value="@Data&#10;@Builder&#10;@NoArgsConstructor&#10;@AllArgsConstructor&#10;@ApiModel(value = &quot;$valu$&quot;, description = &quot;$end$&quot;)" description="" toReformat="false" toShortenFQNames="true">
+    <variable name="valu" expression="className()" defaultValue="" alwaysStopAt="true" />
+    <variable name="end" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="countMonth" value="&lt;operation name=&quot;selectCountGroupByMonth&quot; resulttype=&quot;com.guigug.common.tool.utils.report.MonthDayGroupDTO&quot; multiplicity=&quot;many&quot; remark=&quot;按月统计&quot;&gt;&#10;        SELECT&#10;        DATE_FORMAT( gmt_modified, '%Y/%m' ) AS 'dateGroup',&#10;        COUNT(*) AS 'num'&#10;        FROM&#10;        $END$&#10;        &lt;where&gt;&#10;         DATE_FORMAT( gmt_modified, '%Y-%m' ) BETWEEN DATE_FORMAT( #{startDate,jdbcType=DATE}, '%Y-%m' )&#10;        AND DATE_FORMAT( #{endDate,jdbcType=DATE}, '%Y-%m' )&#10;        &lt;/where&gt;&#10;        GROUP BY dateGroup&#10;        ORDER BY dateGroup ASC&#10;&lt;/operation&gt;" description="" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="XML_TEXT" value="true" />
+    </context>
+  </template>
+</templateSet>

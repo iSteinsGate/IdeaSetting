@@ -1,0 +1,34 @@
+<application>
+  <component name="TipsStore">
+    <option name="globalFirstStartUp" value="false" />
+    <entry projectPath="$USER_HOME$/IdeaProjects/IdeaLearningProject" startUpFlag="FIRST" />
+    <entry projectPath="D:/project/gcrm-parent" startUpFlag="FIRST" />
+    <entry projectPath="D:/project/workspace_NGHIS" startUpFlag="FIRST" />
+    <entry projectPath="D:/project/workspace_NGHIS/nghis" startUpFlag="FIRST" />
+    <entry projectPath="D:/project/workspace_NGHIS/nghis-applet" startUpFlag="FIRST" />
+    <entry projectPath="D:/project/workspace_NGHIS/nghis-miniprogram" startUpFlag="FIRST" />
+    <entry projectPath="D:/project/workspace_NGHIS/nghis-wx" startUpFlag="FIRST" />
+    <entry projectPath="D:/project/workspace_NGHIS_applet/nghis_applet" startUpFlag="FIRST" />
+    <entry projectPath="D:/project/workspace_audit-java/clinic-audit-java" startUpFlag="FIRST" />
+    <entry projectPath="D:/project/workspace_cloud-his-server/cloud-his-server" startUpFlag="FIRST" />
+    <entry projectPath="D:/project/workspace_crowdsourcing-java/crowdsourcing-java" startUpFlag="FIRST" />
+    <entry projectPath="D:/project/workspace_eyx_java/eyx-java" startUpFlag="FIRST" />
+    <entry projectPath="D:/project/workspace_eyx_parent/eyx-parent" startUpFlag="FIRST" />
+    <entry projectPath="D:/project/workspace_eyx_parent_new/eyx-parent" startUpFlag="FIRST" />
+    <entry projectPath="D:/project/workspace_eyx_patent_new/eyx-parent" startUpFlag="FIRST" />
+    <entry projectPath="D:/project/workspace_gcrm/gcrm-parent" startUpFlag="FIRST" />
+    <entry projectPath="D:/project/workspace_heath/healthRecord" startUpFlag="FIRST" />
+    <entry projectPath="D:/project/workspace_his_api/his_api" startUpFlag="FIRST" />
+    <entry projectPath="D:/project/workspace_integration-pay-demo/integration-pay-demo" startUpFlag="FIRST" />
+    <entry projectPath="D:/project/workspace_integration-pay/integration-pay" startUpFlag="FIRST" />
+    <entry projectPath="D:/project/workspace_leetcode/leetcode" startUpFlag="FIRST" />
+    <entry projectPath="D:/project/workspace_nghis-applet-cms/nghis-cms" startUpFlag="FIRST" />
+    <entry projectPath="D:/project/workspace_nghis-applet_new/nghis_applet" startUpFlag="FIRST" />
+    <entry projectPath="D:/project/workspace_nghis_applet/nghis_applet" startUpFlag="FIRST" />
+    <entry projectPath="D:/project/workspace_ruoyi/RuoYi-Vue" startUpFlag="FIRST" />
+    <entry projectPath="D:/project/workspace_test" startUpFlag="FIRST" />
+    <entry projectPath="D:/project/workspace_yaoren/yaoren-parent" startUpFlag="FIRST" />
+    <entry projectPath="D:/project/workspave_his_wechat" startUpFlag="FIRST" />
+    <entry projectPath="D:/project/yaoren-parent" startUpFlag="FIRST" />
+  </component>
+</application>
